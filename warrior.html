@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<title>MerchantRPG Database</title>
+	</head>
+	<body>
+		<!-- Navbar Start -->
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="index.html">MerchantRPG Database</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+			<div class="collapse navbar-collapse">
+				<ul class="navbar-nav">
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="regions.html" id="regionsDropdown" role="button" data-toggle="dropdown">
+							Regions
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="tuvaleforest.html">Tuvale Forest</a>
+							<a class="dropdown-item" href="yarsolcove.html">Yarsol Cove</a>
+							<a class="dropdown-item" href="aldurhighlands.html">Aldur Highlands</a>
+							<a class="dropdown-item" href="vulkrumbadlands.html">Vulkrum Badlands</a>
+							<a class="dropdown-item" href="grimhalvolcano.html">Grimhal Volcano</a>
+							<a class="dropdown-item" href="frentirchasm.html">Frentir Chasm</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="regions.html" id="regionsDropdown" role="button" data-toggle="dropdown">
+							Items
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="weapons.html">Weapons</a>
+							<a class="dropdown-item" href="armors.html">Armors</a>
+							<a class="dropdown-item" href="trinkets.html">Trinkets</a>
+							<a class="dropdown-item" href="consumables.html">Consumables</a>
+							<a class="dropdown-item" href="materials.html">Materials</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="regions.html" id="regionsDropdown" role="button" data-toggle="dropdown">
+							Heroes
+						</a>
+						<div class="dropdown-menu">
+							<a class="dropdown-item" href="warrior.html">Warrior</a>
+							<a class="dropdown-item" href="rogue.html">Rogue</a>
+							<a class="dropdown-item" href="mage.html">Mage</a>
+							<a class="dropdown-item" href="berserker.html">Berserker</a>
+							<a class="dropdown-item" href="cleric.html">Cleric</a>
+							<a class="dropdown-item" href="assassin.html">Assassin</a>
+							<a class="dropdown-item" href="paladin.html">Paladin</a>
+							<a class="dropdown-item" href="darkknight.html">Dark Knight</a>
+							<a class="dropdown-item" href="bard.html">Bard</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<!-- Navbar End -->
+		<div class="container">
+			<div class="row mt-3">
+				<div class="col-12 text-center"><h1>Warrior</h1></div>
+				<div class="col-12 text-center"><img src="img/Img_Warrior.png"><img src="img/Img_Warrior2.png"></div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<h3>How to unlock</h3>
+					<p>Unlocked by default.</p>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<h3>Stats</h3>
+					<select id="prestigeSelect" onchange="refresh();" class="custom-select">
+						<option value="1" selected>No Ascension</option>
+						<option value="2">First Ascension</option>
+						<option value="3">Second Ascension</option>
+					</select>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Stat</th>
+								<th>Starting</th>
+								<th>Per Level</th>
+								<th id="levelCap"></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Health</td>
+								<td id="healthStart"></td>
+								<td id="healthLevel"></td>
+								<td id="healthCap"></td>
+							</tr>
+							<tr>
+								<td>Physical Attack</td>
+								<td id="atkStart"></td>
+								<td id="atkLevel"></td>
+								<td id="atkCap"></td>
+							</tr>
+							<tr>
+								<td>Magical Attack</td>
+								<td id="matkStart"></td>
+								<td id="matkLevel"></td>
+								<td id="matkCap"></td>
+							</tr>
+							<tr>
+								<td>Accuracy</td>
+								<td id="accStart"></td>
+								<td id="accLevel"></td>
+								<td id="accCap"></td>
+							</tr>
+							<tr>
+								<td>Crit</td>
+								<td id="critStart"></td>
+								<td id="critLevel"></td>
+								<td id="critCap"></td>
+							</tr>
+							<tr>
+								<td>Physical Defense</td>
+								<td id="defStart"></td>
+								<td id="defLevel"></td>
+								<td id="defCap"></td>
+							</tr>
+							<tr>
+								<td>Magical Defense</td>
+								<td id="mdefStart"></td>
+								<td id="mdefLevel"></td>
+								<td id="mdefCap"></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<h3>Stat Scaling</h3>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Physical Attack</th>
+								<th>Magical Attack</th>
+								<th>Accuracy</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>5 Per 1 Str</td>
+								<td>1 Per 1 Int</td>
+								<td>4 Per 1 Dex</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<h3>Passive Abilities</h3>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img src="img/Spell_might.png"></td>
+								<td>Might</td>
+								<td>Passively increase Atk by 10%</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_vitality.png"></td>
+								<td>Vitality</td>
+								<td>Passively increase Def by 12% and Atk by 6%</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_juggernaut.png"></td>
+								<td>Juggernaut</td>
+								<td>Passively increase HP by 25%</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row mt-5">
+				<div class="col-12 text-center">
+					<h3>Active Abilities</h3>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th></th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>AP</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td><img src="img/Spell_slash.png"></td>
+								<td>Slash</td>
+								<td>Deal 1.6x Atk</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_shield_slam.png"></td>
+								<td>Shield Slam</td>
+								<td>Deal 1.4x Def & Gain 40% Def for 2 Turns</td>
+								<td>5</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_defend.png"></td>
+								<td>Block</td>
+								<td>Block 78% Atk taken for 1 Turn</td>
+								<td>7</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_cataclysm.png"></td>
+								<td>Slash & Bash</td>
+								<td>Deal 1.8x Atk & Def</td>
+								<td>6</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_unbreakable.png"></td>
+								<td>Unbreakable</td>
+								<td>Remove all Debuffs</td>
+								<td>4</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_shield_slam.png"></td>
+								<td>Shield Slam II</td>
+								<td>Deal 2x Def & Gain 60% Def for 3 Turns</td>
+								<td>8</td>
+							</tr>
+							<tr>
+								<td><img src="img/Spell_master_decoy.png"></td>
+								<td>Taunt</td>
+								<td>Next enemy attack only hits hero</td>
+								<td>10</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<script src="js/popper.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script>
+			let health = [100, 10, 600];
+			let atk = [5, 0.4, 25];
+			let matk = [1, 0.1, 6];
+			let acc = [2, 0.3, 17];
+			let crit = [1, 0, 1];
+			let def = [14, 1.2, 74];
+			let mdef = [8, 0.4, 28];
+
+			let health1 = [15, 850];
+			let atk1 = [1, 55];
+			let matk1 = [0.2, 11];
+			let acc1 = [0.6, 32];
+			let crit1 = [0, 1];
+			let def1 = [1.8, 104];
+			let mdef1 = [0.8, 48];
+
+			let health2 = [20, 1300];
+			let atk2 = [1.4, 89];
+			let matk2 = [0.3, 19];
+			let acc2 = [0.9, 56];
+			let crit2 = [0, 1];
+			let def2 = [2.5, 164];
+			let mdef2 = [1.2, 80];
+
+			$('#healthStart').text(health[0]);
+			$('#atkStart').text(atk[0]);
+			$('#matkStart').text(matk[0]);
+			$('#accStart').text(acc[0]);
+			$('#critStart').text(crit[0]);
+			$('#defStart').text(def[0]);
+			$('#mdefStart').text(mdef[0]);
+
+			function refresh(){
+				let ascension = $('#prestigeSelect').val();
+
+				switch(ascension){
+					case "1":
+						$('#levelCap').text('Level 50');
+						$('#healthLevel').text(health[1]);
+						$('#healthCap').text(health[2]);
+						$('#atkLevel').text(atk[1]);
+						$('#atkCap').text(atk[2]);
+						$('#matkLevel').text(matk[1]);
+						$('#matkCap').text(matk[2]);
+						$('#accLevel').text(acc[1]);
+						$('#accCap').text(acc[2]);
+						$('#critLevel').text(crit[1]);
+						$('#critCap').text(crit[2]);
+						$('#defLevel').text(def[1]);
+						$('#defCap').text(def[2]);
+						$('#mdefLevel').text(mdef[1]);
+						$('#mdefCap').text(mdef[2]);
+					break;
+					case "2":
+						$('#levelCap').text('Level 50');
+						$('#healthLevel').text(health1[0]);
+						$('#healthCap').text(health1[1]);
+						$('#atkLevel').text(atk1[0]);
+						$('#atkCap').text(atk1[1]);
+						$('#matkLevel').text(matk1[0]);
+						$('#matkCap').text(matk1[1]);
+						$('#accLevel').text(acc1[0]);
+						$('#accCap').text(acc1[1]);
+						$('#critLevel').text(crit1[0]);
+						$('#critCap').text(crit1[1]);
+						$('#defLevel').text(def1[0]);
+						$('#defCap').text(def1[1]);
+						$('#mdefLevel').text(mdef1[0]);
+						$('#mdefCap').text(mdef1[1]);
+					break;
+					case "3":
+						$('#levelCap').text('Level 50');
+						$('#healthLevel').text(health2[0]);
+						$('#healthCap').text(health2[1]);
+						$('#atkLevel').text(atk2[0]);
+						$('#atkCap').text(atk2[1]);
+						$('#matkLevel').text(matk2[0]);
+						$('#matkCap').text(matk2[1]);
+						$('#accLevel').text(acc2[0]);
+						$('#accCap').text(acc2[1]);
+						$('#critLevel').text(crit2[0]);
+						$('#critCap').text(crit2[1]);
+						$('#defLevel').text(def2[0]);
+						$('#defCap').text(def2[1]);
+						$('#mdefLevel').text(mdef2[0]);
+						$('#mdefCap').text(mdef2[1]);
+					break;
+				}
+			}
+
+			refresh();
+		</script>
+	</body>
+</html>
